@@ -1,4 +1,4 @@
-### 🍽️ Meals App Flutter
+## 🍽️ Meals App Flutter
 
 A Flutter application built to understand real-world Flutter app structure, focusing on navigation, data flow, and app-wide state management.
 
