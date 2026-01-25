@@ -1,14 +1,14 @@
-🍽️ Meals App Flutter
+### 🍽️ Meals App Flutter
 
 A Flutter application built to understand real-world Flutter app structure, focusing on navigation, data flow, and app-wide state management.
 
-📌 Project Explanation (For Interviewers)
+## 📌 Project Explanation (For Interviewers)
 
 This project simulates a real food-browsing application and demonstrates how multiple screens communicate while sharing a common state.
 
 The app starts with a TabScreen that manages two main sections:
 
-Categories – for browsing meals
+ Categories – for browsing meals
 
 Favorites – for accessing saved meals
 
@@ -31,8 +31,8 @@ TabScreen
 ![Screenshot2](assets/screenshots/Screenshot_20260125_075438.png)
 ![Screenshot3](assets/screenshots/Screenshot_20260125_075459.png)
 
-
-🧠 What This Project Demonstrates
+This Is Not The Final UI.The UI Will Change Every Time As Per The Current Market Standard
+## 🧠 What This Project Demonstrates
 
 Structured navigation using tabs and routes
 
@@ -68,16 +68,16 @@ Material Design
 
 ## How to Run
 
-Clone the repository
+# Clone the repository
 
 git clone https://github.com/yourusername/meals_app_flutter.git
 
 
-Install dependencies
+## Install dependencies
 
 flutter pub get
 
 
-Run the app
+## Run the app
 
 flutter run
