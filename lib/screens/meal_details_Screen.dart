@@ -5,14 +5,26 @@ import 'package:mealsapp/widgets/custom_Text.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealDetailsScreen extends StatelessWidget {
-  const MealDetailsScreen({super.key, required this.meal});
+  const MealDetailsScreen({super.key,
+    required this.meal,
+    required this.onToggledFavorite
+  });
 
   final Meal meal;
+  final void Function(Meal meal) onToggledFavorite;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(meal.title),),
+      appBar: AppBar(title: Text(meal.title),
+        actions: [
+          IconButton(onPressed: (){
+            onToggledFavorite(meal);
+          },
+              icon: const Icon(Icons.favorite)
+          ),
+        ],
+      ),
       body: Column(
         children: [
           FadeInImage(placeholder: MemoryImage(kTransparentImage),

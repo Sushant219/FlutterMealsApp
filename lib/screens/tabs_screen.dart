@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mealsapp/models/meal.dart';
 import 'package:mealsapp/screens/categoryScreen.dart';
 import 'package:mealsapp/screens/mealScreen.dart';
 
@@ -11,6 +12,20 @@ class TabsScreen extends StatefulWidget {
 
 class _TabsScreenState extends State<TabsScreen>{
 int _selectedPageIndex = 0;
+final List<Meal> _favoriteMeals = [];
+
+
+void toggleTheMealFavorite(Meal meal){
+  setState(() {
+    final isExisting = _favoriteMeals.contains(meal);
+
+    if(isExisting){
+      _favoriteMeals.remove(meal);
+    }else{
+      _favoriteMeals.add(meal);
+    }
+  });
+}
 
 
 void _selectPage(int index){
@@ -22,11 +37,11 @@ void _selectPage(int index){
 
 @override
 Widget build(BuildContext context) {
-  Widget activePage = const CategoryScreen();
+  Widget activePage = CategoryScreen(onToggledFavorite:toggleTheMealFavorite);
   var activePageTitle = "Categories";
 
   if (_selectedPageIndex == 1) {
-    activePage = const MealsScreen(meals: []);
+    activePage = MealsScreen(meals: const [], onToggledFavorite:toggleTheMealFavorite);
     print("Meals Screen Activated");
     activePageTitle =
     "Favorites"; // Now This activePageTitle Will Be Displayed In Our AppBar Title
