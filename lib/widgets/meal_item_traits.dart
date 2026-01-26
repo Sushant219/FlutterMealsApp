@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class MealItemTraits extends StatelessWidget {
-  const MealItemTraits({super.key, required this.icon,required this.text});
-  final IconData icon;
+  const MealItemTraits({super.key,this.icon,required this.text});
+  final IconData? icon;
   final String text;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Icon(icon,color: Colors.white,size: 20),
-        SizedBox(width: 6),
+        SizedBox(width: 4),
         Text(text,style: TextStyle(color: Colors.white),)
       ],
     );

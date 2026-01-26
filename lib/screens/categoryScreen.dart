@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:mealsapp/models/category.dart';
 import 'package:mealsapp/models/meal.dart';
 import 'package:mealsapp/screens/mealScreen.dart';
@@ -32,19 +33,23 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 3/2,
-              crossAxisSpacing: 2,
-              mainAxisSpacing: 2
-          ),
-        children: [
-          for(final category in availableCategories)
-            CategoryGridItem(category: category, onSelectCategory: (){
-              _selectCategory(context,category);
-            }),
-        ],
+    return MasonryGridView.builder(
+        gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+        ),
+        mainAxisSpacing: 2,
+        crossAxisSpacing: 2,
+        itemCount: availableCategories.length,
+        itemBuilder: (context, index) {
+          final category = availableCategories[index];
+          return CategoryGridItem(
+            category: category,
+            onSelectCategory: () {
+              _selectCategory(context, category);
+            },
+          );
+        },
     );
+
   }
 }

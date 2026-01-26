@@ -11,51 +11,73 @@ final availableCategories = [
     id: 'c1',
     title: 'Italian',
     color: Colors.purple,
+    image: 'https://images.unsplash.com/photo-1556761223-4c4282c73f77?w=500&fit=crop&q=70&auto=format',
   ),
   Category(
     id: 'c2',
     title: 'Quick & Easy',
     color: Colors.red,
+    image: 'https://images.unsplash.com/photo-1550317138-10000687a72b',
   ),
-   Category(
+  Category(
     id: 'c3',
     title: 'Hamburgers',
     color: Colors.orange,
+    image: 'https://images.unsplash.com/photo-1550547660-d9450f859349',
   ),
-   Category(
+  Category(
     id: 'c4',
     title: 'German',
     color: Colors.amber,
+    image: 'https://images.unsplash.com/photo-1613746192032-bee1894c743e?w=500&fit=crop&q=70&auto=format',
   ),
-   Category(
+  Category(
     id: 'c5',
     title: 'Light & Lovely',
     color: Colors.blue,
+    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061',
   ),
-   Category(
+  Category(
     id: 'c6',
     title: 'Exotic',
     color: Colors.green,
+    image: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc',
   ),
-   Category(
+  Category(
     id: 'c7',
     title: 'Breakfast',
     color: Colors.lightBlue,
+    image: 'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0',
   ),
-   Category(
+  Category(
     id: 'c8',
     title: 'Asian',
     color: Colors.lightGreen,
+    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c',
   ),
-   Category(
+  Category(
     id: 'c9',
     title: 'French',
     color: Colors.pink,
+    image: 'https://images.unsplash.com/photo-1646296568685-96921900f23a?w=400&fit=crop&q=60&auto=format',
   ),
-   Category(
+  Category(
     id: 'c10',
     title: 'Summer',
     color: Colors.teal,
+    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836',
+  ),
+  Category(
+    id: 'c11',
+    title: 'Indian',
+    color: Colors.teal,
+    image: 'https://images.unsplash.com/photo-1728910156510-77488f19b152?w=500&fit=crop&q=70&auto=format',
+  ),
+  Category(
+    id: 'c12',
+    title: 'Odia',
+    color: Colors.teal,
+    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&fit=crop&q=70&auto=format',
   ),
 ];
 

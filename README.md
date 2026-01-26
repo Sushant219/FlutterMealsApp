@@ -28,7 +28,7 @@ TabScreen
 
 ## Screenshots
 
-![Screenshot1](assets/screenshots/Screenshot_20260125_075358.png)
+![Screenshot1](assets/screenshots/Screenshot_20260126_100136.png)
 ![Screenshot2](assets/screenshots/Screenshot_20260125_075438.png)
 ![Screenshot3](assets/screenshots/Screenshot_20260125_075459.png)
 

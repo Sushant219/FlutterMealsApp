@@ -14,6 +14,13 @@ class _TabsScreenState extends State<TabsScreen>{
 int _selectedPageIndex = 0;
 final List<Meal> _favoriteMeals = [];
 
+void _showInfoMessage(String message){
+  ScaffoldMessenger.of(context).clearSnackBars();
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(content: Text(message)),
+  );
+}
+
 
 void toggleTheMealFavorite(Meal meal){
   setState(() {
@@ -21,8 +28,11 @@ void toggleTheMealFavorite(Meal meal){
 
     if(isExisting){
       _favoriteMeals.remove(meal);
+      _showInfoMessage("Meal removed...");
     }else{
       _favoriteMeals.add(meal);
+      _showInfoMessage("Meal added...");
+
     }
   });
 }
@@ -41,7 +51,7 @@ Widget build(BuildContext context) {
   var activePageTitle = "Categories";
 
   if (_selectedPageIndex == 1) {
-    activePage = MealsScreen(meals: const [], onToggledFavorite:toggleTheMealFavorite);
+    activePage = MealsScreen(meals: _favoriteMeals, onToggledFavorite:toggleTheMealFavorite);
     print("Meals Screen Activated");
     activePageTitle =
     "Favorites"; // Now This activePageTitle Will Be Displayed In Our AppBar Title
