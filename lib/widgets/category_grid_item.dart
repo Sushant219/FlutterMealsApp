@@ -46,7 +46,7 @@ class CategoryGridItem extends StatelessWidget {
 
               // Title
               Positioned(
-                left: 14,
+                left: 13,
                 right: 14,
                 bottom: 14,
                 child: Text(
