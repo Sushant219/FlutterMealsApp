@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mealsapp/models/meal.dart';
 import 'package:mealsapp/screens/categoryScreen.dart';
 import 'package:mealsapp/screens/mealScreen.dart';
+import 'package:mealsapp/widgets/side_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key});
@@ -62,6 +63,7 @@ Widget build(BuildContext context) {
       // And It Should Depend On Tab,Which Tab It Showing.
       title: Text(activePageTitle),
     ),
+    drawer: SideDrawer(),
 
     body: activePage,//This Will Show Which Screen Should Be Displayed Based On The Condition.
 

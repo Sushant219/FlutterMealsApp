@@ -28,11 +28,18 @@ TabScreen
 
 ## Screenshots
 
-![Screenshot1](assets/screenshots/Screenshot_20260126_100136.png)
-![Screenshot2](assets/screenshots/Screenshot_20260125_075438.png)
-![Screenshot3](assets/screenshots/Screenshot_20260125_075459.png)
 
-This Is Not The Final UI.The UI Will Change Every Time As Per The Current Market Standard
+## Categories
+![Screenshot1](assets/screenshots/Screenshot_20260126_100136.png)
+## Meals
+![Screenshot2](assets/screenshots/Screenshot_20260125_075438.png)
+## Meal Details
+![Screenshot3](assets/screenshots/Screenshot_20260125_075459.png)
+## Side Drawer
+![Screenshot3](assets/screenshots/Screenshot_20260127_073131.png)
+
+This Is Not The Final UI.The UI Will Change Every Time As Per The Market Standard
+
 ## 🧠 What This Project Demonstrates
 
 Structured navigation using tabs and routes
