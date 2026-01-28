@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mealsapp/models/meal.dart';
 import 'package:mealsapp/screens/categoryScreen.dart';
+import 'package:mealsapp/screens/filter_Screen.dart';
 import 'package:mealsapp/screens/mealScreen.dart';
 import 'package:mealsapp/widgets/side_drawer.dart';
 
@@ -46,6 +47,19 @@ void _selectPage(int index){
   });
 }
 
+
+void _onSelectSideDrawer(String id){
+
+  Navigator.of(context).pop(); // It Will Make Sure That The Side Drawer Should Always Close Automatic
+  // And if it hits the filter id then it will show the filter page.
+  // And after the page open when we close the page the drawer will close automatically.
+  if(id == "filters") {
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => const FilterScreen()));
+  }
+}
+
+
 @override
 Widget build(BuildContext context) {
   Widget activePage = CategoryScreen(onToggledFavorite:toggleTheMealFavorite);
@@ -63,7 +77,7 @@ Widget build(BuildContext context) {
       // And It Should Depend On Tab,Which Tab It Showing.
       title: Text(activePageTitle),
     ),
-    drawer: SideDrawer(),
+    drawer: SideDrawer(onSelectDrawerScreen:_onSelectSideDrawer),
 
     body: activePage,//This Will Show Which Screen Should Be Displayed Based On The Condition.
 

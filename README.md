@@ -64,6 +64,10 @@ Detailed meal view (ingredients & steps)
 
 Add / remove meals from favorites
 
+Drawer Based Navigation (Filter & Meals)
+
+Select Meal With Filter
+
 App-wide favorite state management
 
 Technologies Used
