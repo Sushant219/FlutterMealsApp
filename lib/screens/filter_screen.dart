@@ -25,12 +25,12 @@ class _FilterScreenState extends State<FilterScreen> {
                 });
               },
             title: Text("Gluten Free",style: Theme.of(context).textTheme.titleLarge!.copyWith(
-              color: Theme.of(context).colorScheme.onBackground,
+              color: Theme.of(context).colorScheme.onSurface,
             ),),
             subtitle: Text("Only include gluten-free meals",style: Theme.of(context).textTheme.labelMedium!.copyWith(
-              color: Theme.of(context).colorScheme.onBackground,),
+              color: Theme.of(context).colorScheme.onSurface,),
           ),
-        activeColor: Theme.of(context).colorScheme.tertiary,
+        activeThumbColor: Theme.of(context).colorScheme.tertiary,
         contentPadding: EdgeInsets.only(left: 34,right: 22),
           ),
         ],

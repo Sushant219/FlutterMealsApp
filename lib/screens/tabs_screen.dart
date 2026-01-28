@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mealsapp/models/meal.dart';
 import 'package:mealsapp/screens/categoryScreen.dart';
-import 'package:mealsapp/screens/filter_Screen.dart';
+import 'package:mealsapp/screens/filter_screen.dart';
 import 'package:mealsapp/screens/mealScreen.dart';
 import 'package:mealsapp/widgets/side_drawer.dart';
 
