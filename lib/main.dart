@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mealsapp/screens/categoryScreen.dart';
+import 'package:mealsapp/provider/favorite_providers.dart';
+import 'package:provider/provider.dart';
 import 'package:mealsapp/screens/tabs_screen.dart';
 
 final theme = ThemeData(
@@ -30,7 +31,9 @@ final theme = ThemeData(
 
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(create: (context)=> FavoriteProviders(),
+  child:const MyApp(),)
+  );
 }
 
 class MyApp extends StatelessWidget {

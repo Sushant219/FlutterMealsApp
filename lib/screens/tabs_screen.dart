@@ -14,30 +14,8 @@ class TabsScreen extends StatefulWidget {
 
 class _TabsScreenState extends State<TabsScreen>{
 int _selectedPageIndex = 0;
-final List<Meal> _favoriteMeals = [];
+final List<Meal> meals = [];
 
-void _showInfoMessage(String message){
-  ScaffoldMessenger.of(context).clearSnackBars();
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(content: Text(message)),
-  );
-}
-
-
-void toggleTheMealFavorite(Meal meal){
-  setState(() {
-    final isExisting = _favoriteMeals.contains(meal);
-
-    if(isExisting){
-      _favoriteMeals.remove(meal);
-      _showInfoMessage("Meal removed...");
-    }else{
-      _favoriteMeals.add(meal);
-      _showInfoMessage("Meal added...");
-
-    }
-  });
-}
 
 
 void _selectPage(int index){
@@ -47,29 +25,28 @@ void _selectPage(int index){
   });
 }
 
-
-void _onSelectSideDrawer(String id){
+// This One Is For Side Bar
+void _onSelectSideDrawer(String id) async{
 
   Navigator.of(context).pop(); // It Will Make Sure That The Side Drawer Should Always Close Automatic
   // And if it hits the filter id then it will show the filter page.
   // And after the page open when we close the page the drawer will close automatically.
   if(id == "filters") {
-    Navigator.of(context).push(
+    final result = await Navigator.of(context).push<Map<Filter,bool>>(
         MaterialPageRoute(builder: (context) => const FilterScreen()));
   }
 }
+// Side Bar End
 
 
 @override
 Widget build(BuildContext context) {
-  Widget activePage = CategoryScreen(onToggledFavorite:toggleTheMealFavorite);
+  Widget activePage = CategoryScreen();
   var activePageTitle = "Categories";
 
   if (_selectedPageIndex == 1) {
-    activePage = MealsScreen(meals: _favoriteMeals, onToggledFavorite:toggleTheMealFavorite);
-    print("Meals Screen Activated");
-    activePageTitle =
-    "Favorites"; // Now This activePageTitle Will Be Displayed In Our AppBar Title
+    activePage = MealsScreen(meals:meals);
+    activePageTitle = "Favorites"; // Now This activePageTitle Will Be Displayed In Our AppBar Title
   }
   return Scaffold(
     appBar: AppBar(

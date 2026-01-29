@@ -1,27 +1,32 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mealsapp/models/meal.dart';
+import 'package:mealsapp/provider/favorite_providers.dart';
 import 'package:mealsapp/widgets/custom_Text.dart';
+import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealDetailsScreen extends StatelessWidget {
-  const MealDetailsScreen({super.key,
-    required this.meal,
-    required this.onToggledFavorite
+  const MealDetailsScreen({super.key, required this.meal,
   });
 
   final Meal meal;
-  final void Function(Meal meal) onToggledFavorite;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(meal.title),
         actions: [
-          IconButton(onPressed: (){
-            onToggledFavorite(meal);
-          },
-              icon: const Icon(Icons.favorite)
+          Consumer<FavoriteProviders>(
+            builder: (ctx, favs, _) => IconButton(
+              onPressed: () {
+                favs.toggleToFavoriteMeals(meal);
+              },
+              icon: Icon(
+                favs.favoriteMeals.contains(meal)
+                    ? Icons.favorite
+                    : Icons.favorite_border,
+              ),
+            ),
           ),
         ],
       ),
