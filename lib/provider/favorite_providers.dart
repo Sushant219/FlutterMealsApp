@@ -1,24 +1,25 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import 'package:mealsapp/models/meal.dart';
-import 'package:provider/provider.dart';
-class FavoriteProviders extends ChangeNotifier{
 
-  final List<Meal>_favoriteMeals = [];
+class FavoriteMealsNotifier extends StateNotifier<List<Meal>> {
+  FavoriteMealsNotifier(): super([]);
 
-  List<Meal> get favoriteMeals {
-    return List.unmodifiable(_favoriteMeals);
-  }
+  bool toggleMealStatus(Meal meals){
+    final mealIsFavorite = state.contains(meals);
 
-  void toggleToFavoriteMeals(Meal meal){
-    final isExisting = _favoriteMeals.contains(meal);
-
-    if(isExisting){
-      _favoriteMeals.remove(meal);
-    }else{
-      _favoriteMeals.add(meal);
+    if(mealIsFavorite){
+      state = state.where((meal) => meal.id != meals.id).toList();
+      return false;
+    } else {
+      state = [...state, meals];
+      return true;
     }
-    notifyListeners();
   }
-
-
 }
+
+
+final favoriteMealsProvider =
+StateNotifierProvider<FavoriteMealsNotifier, List<Meal>>((ref) {
+  return FavoriteMealsNotifier();
+});
+

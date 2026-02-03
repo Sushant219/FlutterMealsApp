@@ -8,7 +8,7 @@ import '../models/meal.dart';
 class MealsScreen extends StatelessWidget {
   const MealsScreen({super.key,
     this.title,
-    required this.meals,
+    required this.meals
   });
 
   final String? title;
@@ -17,7 +17,7 @@ class MealsScreen extends StatelessWidget {
   void selectMeal(BuildContext context,Meal meal){
     Navigator.push(context,
         MaterialPageRoute(builder:(context)=> MealDetailsScreen(
-            meal: meal,
+            meal: meal
            ),
         ),
     );

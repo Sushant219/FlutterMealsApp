@@ -9,11 +9,13 @@ import '../data/category.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({
-    super.key,
+    super.key, required this.availableMeals
   });
 
+  final List<Meal> availableMeals;
+
   void _selectCategory(BuildContext context,Category category) {
-    final filteredMeals = dummyMeals
+    final filteredMeals = availableMeals
         .where((meal) => meal.categories.contains(category.id))
         .toList();
 
@@ -21,7 +23,7 @@ class CategoryScreen extends StatelessWidget {
       MaterialPageRoute(
         builder: (ctx) => MealsScreen(
           title: category.title, // optional improvement
-          meals: filteredMeals,
+          meals: filteredMeals
         ),
       ),
     );
