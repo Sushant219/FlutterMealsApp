@@ -21,7 +21,6 @@ class CategoryGridItem extends StatelessWidget {
           onTap: onSelectCategory,
           child: Stack(
             children: [
-              // ✅ BASE (non-positioned) → defines height for staggered grid
               FadeInImage(
                 placeholder: MemoryImage(kTransparentImage),
                 image: CachedNetworkImageProvider(category.image),

@@ -2,7 +2,7 @@
 
 A Flutter application built to understand real-world Flutter app structure, focusing on navigation, data flow, and app-wide state management.
 
-## 📌 Project Explanation (For Interviewers)
+## 📌 Project Explanation
 
 This project simulates a real food-browsing application and demonstrates how multiple screens communicate while sharing a common state.
 
@@ -10,7 +10,11 @@ The app starts with a TabScreen that manages two main sections:
 
  Categories – for browsing meals
 
-Favorites – for accessing saved meals
+ Favorites – for accessing saved meals
+ 
+ Filters - for filtering based on category
+
+ RiverPod - for state management
 
 From the Categories tab, the user navigates through:
 Categories → Meals → Meal Details
@@ -24,65 +28,55 @@ The project focuses on data passing, state synchronization, and UI reuse, rather
 ## 🧭 App Flow
 TabScreen
 ├── Categories → Meals → Meal Details
-└── Favorites → Meal Details
+├──  Favorites → Meal Details
+└── Filters → Categories
 
 ## Screenshots
-
-
 ## Categories
-![Screenshot1](assets/screenshots/Screenshot_20260126_100136.png)
+![Screenshot1](assets/screenshots/Screenshot_20260208_073154.png)
 ## Meals
-![Screenshot2](assets/screenshots/Screenshot_20260125_075438.png)
+![Screenshot2](assets/screenshots/Screenshot_20260208_074701.png)
 ## Meal Details
-![Screenshot3](assets/screenshots/Screenshot_20260125_075459.png)
+![Screenshot3](assets/screenshots/Screenshot_20260208_074742.png)
+## Adiing Fav
+![Screenshot3](assets/screenshots/Screenshot_20260208_074752.png)
 ## Side Drawer
-![Screenshot3](assets/screenshots/Screenshot_20260127_073131.png)
+![Screenshot3](assets/screenshots/Screenshot_20260208_075050.png)
 
 This Is Not The Final UI.The UI Will Change Every Time As Per The Market Standard
 
 ## 🧠 What This Project Demonstrates
 
 Structured navigation using tabs and routes
-
 Passing data between screens using constructors
-
-Centralized state for managing favorites
-
+Centralized state management using Riverpod
 Reusable widgets for meals and UI components
+Separation of UI and business logic
+Understanding of Flutter’s widget tree and rebuild behavior
+Provider-based dependency injection using Riverpod
 
-Separation of UI and logic
-
-Understanding of Flutter’s widget tree and rebuilds
-
-Features
+## Features
 
 Tab-based navigation (Categories & Favorites)
-
 Category-wise meal browsing
-
 Detailed meal view (ingredients & steps)
-
 Add / remove meals from favorites
+Drawer-based navigation (Filter & Meals)
+Meal filtering system
+App-wide favorite state management using Riverpod
 
-Drawer Based Navigation (Filter & Meals)
-
-Select Meal With Filter
-
-App-wide favorite state management
-
-Technologies Used
+## Technologies Used
 
 Flutter
-
 Dart
-
 Material Design
+Riverpod (state management)
 
 ## How to Run
 
 # Clone the repository
 
-git clone https://github.com/yourusername/meals_app_flutter.git
+git clone https://github.com/Sushant219/FlutterMealsApp
 
 
 ## Install dependencies

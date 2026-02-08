@@ -42,27 +42,73 @@ class MealDetailsScreen extends ConsumerWidget {
 
       body: Column(
         children: [
-          FadeInImage(placeholder: MemoryImage(kTransparentImage),
-            image:  CachedNetworkImageProvider(meal.imageUrl),
-            //fadeInDuration:const Duration(milliseconds: 300) ,
+          SizedBox(
             width: double.infinity,
-            height:300,
+            child: Card(
+              elevation: 4,
+              clipBehavior: Clip.antiAlias,
+              margin: const EdgeInsets.all(12),
+              child: FadeInImage(
+                placeholder: MemoryImage(kTransparentImage),
+                image: CachedNetworkImageProvider(meal.imageUrl),
+                width: double.infinity,
+                height: 300,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-          Text('Ingredients',style:Theme.of(context).textTheme.titleLarge!.copyWith(
-            color: Theme.of(context).colorScheme.primary,
-          ),),
-          SizedBox(height: 10),
-          for(final ingrediant in meal.ingredients)
-            CustomText(data: ingrediant),
-          SizedBox(height: 10),
-          Text('Steps',style:Theme.of(context).textTheme.titleLarge!.copyWith(
-            color: Theme.of(context).colorScheme.primary,
-          ),),
-          SizedBox(height: 10),
-          for(final step in meal.steps)
-            CustomText(data: step),
 
+          SizedBox(
+            width: double.infinity,
+            child: Card(
+              elevation: 4,
+              margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Ingredients',
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    for (final ingredient in meal.ingredients)
+                      CustomText(data: ingredient),
+                  ],
+                ),
+              ),
+            ),
+          ),
+
+          SizedBox(
+            width: double.infinity,
+            child: Card(
+              elevation: 4,
+              margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Steps',
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    for (final step in meal.steps)
+                      CustomText(data: step),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
+
       ),
     );
   }

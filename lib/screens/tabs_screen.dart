@@ -3,10 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mealsapp/data/category.dart';
 import 'package:mealsapp/models/meal.dart';
 import 'package:mealsapp/provider/favorite_providers.dart';
+import 'package:mealsapp/provider/filter_providers.dart';
 import 'package:mealsapp/screens/categoryScreen.dart';
 import 'package:mealsapp/screens/filter_screen.dart';
 import 'package:mealsapp/screens/mealScreen.dart';
 import 'package:mealsapp/widgets/side_drawer.dart';
+
+import '../provider/theme_providers.dart';
 
 
 
@@ -19,13 +22,6 @@ class TabsScreen extends ConsumerStatefulWidget {
 
 class _TabsScreenState extends ConsumerState<TabsScreen>{
   int _selectedPageIndex = 0;
-  final List<Meal> _favoriteMeals = [];
-
-  void _showInfoMessage(String message){
-
-  }
-
-
 
   void _selectPage(int index){
     setState(() {
@@ -35,34 +31,42 @@ class _TabsScreenState extends ConsumerState<TabsScreen>{
   }
 
 
-  Map<Filter, bool> _selectedFilters = {};
 
   void _onSelectSideDrawer(String id) async {
     Navigator.of(context).pop();
-
     if (id == "filters") {
-      final result = await Navigator.of(context).push<Map<Filter, bool>>(
+      await Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => FilterScreen(
-            currentFilter: _selectedFilters,
-          ),
-        ),
-      );
-
-      if (result != null) {
-        setState(() {
-          _selectedFilters = result;
-        });
+          builder: (context) => const FilterScreen(),
+        ),);
       }
-    }
   }
-
 
 
   @override
   Widget build(BuildContext context) {
+    final themeMode = ref.watch(themeProvider);
+    final activeMeals = ref.watch(filterProvider);
+    final filteredMeals = dummyMeals.where((meal){
+      if(activeMeals[Filter.lactoseFree]! && !meal.isLactoseFree){
+        return false;
+      }
+      if(activeMeals[Filter.glutenFree]! && !meal.isGlutenFree){
+      return false;
+      }
+      if(activeMeals[Filter.vegan]! && !meal.isVegan){
+      return false;
+      }
+      if(activeMeals[Filter.vegetarian]! && !meal.isVegetarian){
+      return false;
+      }
+      return true;
+    }).toList();
+
+
     Widget activePage = CategoryScreen(
-      availableMeals: dummyMeals,
+      availableMeals: filteredMeals
+
     );
     var activePageTitle = "Categories";
 
@@ -73,9 +77,22 @@ class _TabsScreenState extends ConsumerState<TabsScreen>{
     }
     return Scaffold(
       appBar: AppBar(
-        // This Title Will Be Dynamically.
-        // And It Should Depend On Tab,Which Tab It Showing.
         title: Text(activePageTitle),
+        actions: [
+          IconButton(
+            icon: Icon(
+              themeMode == ThemeMode.dark
+                  ? Icons.light_mode
+                  : Icons.dark_mode,
+            ),
+            onPressed: () {
+              ref.read(themeProvider.notifier).state =
+              themeMode == ThemeMode.dark
+                  ? ThemeMode.light
+                  : ThemeMode.dark;
+            },
+          ),
+        ],
       ),
       drawer: SideDrawer(onSelectDrawerScreen:_onSelectSideDrawer),
 
@@ -90,7 +107,7 @@ class _TabsScreenState extends ConsumerState<TabsScreen>{
 
           items: const[
             BottomNavigationBarItem(
-                icon: Icon(Icons.set_meal), label: "Categories"),
+                icon: Icon(Icons.list), label: "Categories"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.favorite), label: "Favorite"),
           ]

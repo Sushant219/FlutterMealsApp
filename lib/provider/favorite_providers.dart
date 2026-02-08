@@ -1,4 +1,7 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
+
+
 import 'package:mealsapp/models/meal.dart';
 
 class FavoriteMealsNotifier extends StateNotifier<List<Meal>> {
@@ -8,7 +11,8 @@ class FavoriteMealsNotifier extends StateNotifier<List<Meal>> {
     final mealIsFavorite = state.contains(meals);
 
     if(mealIsFavorite){
-      state = state.where((meal) => meal.id != meals.id).toList();
+      state = state.where((meal) => meal.
+      id != meals.id).toList();
       return false;
     } else {
       state = [...state, meals];
